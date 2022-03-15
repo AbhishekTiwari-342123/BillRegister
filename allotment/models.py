@@ -1,10 +1,10 @@
 
 from django.db import models
 # Create your models here
-from django.db import models
+
 
 class Alloted_Total(models.Model):
-    pass
+    Salary_Total_Allotment=models.IntegerField(default=0)
 
 
 class Allotment_Salary(models.Model):
