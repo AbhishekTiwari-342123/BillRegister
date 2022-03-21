@@ -91,7 +91,7 @@ class Object_Head(models.Model):
         unique_together = (('Object_Code', 'SubScheme_Code'),)
 
     def __str__(self):
-        return str(self.Object_Code)+"-"+str(self.SubScheme_Code)
+        return str(self.SubScheme_Code)+" - "+str(self.Object_Code)+" - "+str(self.Object_Name)
 
 ########################################################## Scheme Master Table ends ###########################################################
 
@@ -119,4 +119,3 @@ class Salary_Register(models.Model):
     Bill_Balance=models.IntegerField(default=0)
     Bill_Remark=models.CharField(default="",max_length=250)
 
-  
