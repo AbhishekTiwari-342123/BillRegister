@@ -23,3 +23,16 @@ def login_user(request):
 
 def home(request):
     return HttpResponse('Home')
+
+
+def salaryRegister(request):
+    if request.method=="POST":
+        bill_type=request.POST.get('bill_type')
+        bill_no=request.POST.get('bill_no')
+        bill_description=request.POST.get('descp')
+        bill_date=request.POST.get('bill_date')
+        bill_amount=request.POST.get('bill_amount')
+        bill_remark=request.POST.get('remark')
+        
+    else:
+        return HttpResponse('render the form')        

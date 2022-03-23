@@ -3,10 +3,20 @@ from ast import Str
 from email.header import Header
 from tkinter import CASCADE
 from django.db import models
+from django.contrib.auth.models import User
 # Create your models here
 
 ########################################################## Scheme Master Table starts ###########################################################
 
+class roles(models.Model):
+    Role = models.CharField(max_length=10,default="")
+
+    def __str__(self):
+        return str(self.Role)
+
+class AssignRole(models.Model):
+    user = models.OneToOneField(User,on_delete=models.CASCADE,    default=None, null=True)
+    role = models.ForeignKey(roles, on_delete=models.CASCADE)
 
 # one-one reln between Major and Sub Major, Total Participation on Sub side, 
 # one table for both (Head_No, SubHead_No, Head_Name, SubHead_Name)
