@@ -22,7 +22,7 @@ class AssignRole(models.Model):
 # one table for both (Head_No, SubHead_No, Head_Name, SubHead_Name)
 class Major_Sub_Head(models.Model):
     Head_Code=models.IntegerField(primary_key=True)
-    SubHead_Code=models.IntegerField(unique=True, default=0)
+    SubHead_Code=models.IntegerField(default=0)
     Head_Name=models.CharField(default="",max_length=250)
     SubHead_Name=models.CharField(default="",max_length=250)
 
@@ -98,7 +98,7 @@ class Object_Head(models.Model):
     SubScheme_Code=models.ForeignKey(Scheme_SubScheme, on_delete=models.CASCADE)
 
     class Meta:
-        unique_together = (('Object_Code', 'SubScheme_Code'),)
+        unique_together = (('Object_Code','Object_Name', 'SubScheme_Code'),)
 
     def __str__(self):
         return str(self.SubScheme_Code)+" - "+str(self.Object_Code)+" - "+str(self.Object_Name)

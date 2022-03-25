@@ -10,7 +10,7 @@ class AssignRoleAdmin(admin.ModelAdmin):
     list_display=('user','role')
 
 class MajorSubHead_Admin(admin.ModelAdmin):
-    list_display=('Head_Code','SubHead_Code','Head_Name','SubHead_Name')
+    list_display=('Head_Code','Head_Name','SubHead_Code','SubHead_Name')
 
 class MinorHead_Admin(admin.ModelAdmin):
     list_display=('MinorHead_Code','MinorHead_Name','Head_Code')
