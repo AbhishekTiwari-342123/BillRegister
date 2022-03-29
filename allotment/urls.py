@@ -8,4 +8,7 @@ urlpatterns= [
 
     # home after login
     path('home/', views.home, name='home'),
+    path('home/salary-register/', views.salaryRegister, name='salary-register'),
+    path('admin1/home/', views.adminHome, name="admin-home")
+    
 ]

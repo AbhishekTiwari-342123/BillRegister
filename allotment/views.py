@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
+from .models import *
 
 # Create your views here.
 
@@ -18,7 +19,7 @@ def login_user(request):
         else:
             return HttpResponse("<h1>Incorrect Credentials , User was not recognised. New User ?  Register <a href='register' }'>here</a>")            
     else:                      
-        return render(request,'Register/login.html')
+        return render(request,'salary/login.html')
 
 
 def home(request):
@@ -27,12 +28,25 @@ def home(request):
 
 def salaryRegister(request):
     if request.method=="POST":
-        bill_type=request.POST.get('bill_type')
-        bill_no=request.POST.get('bill_no')
-        bill_description=request.POST.get('descp')
-        bill_date=request.POST.get('bill_date')
-        bill_amount=request.POST.get('bill_amount')
-        bill_remark=request.POST.get('remark')
-        
+        print(request.POST)
+        new_entry=Salary_Register(Bill_Type=Salary_Allotment.objects.get(id=request.POST.get('bill_type')),
+        Bill_Number=request.POST.get('bill_no'),
+        Description=request.POST.get('bill_description'),
+        Bill_Date=request.POST.get('bill_date'),
+        Bill_Amount=request.POST.get('bill_amount'),
+        Bill_Remark=request.POST.get('bill_remark'),
+        Bill_Expenditure=request.POST.get('bill_amount'),
+        Bill_Balance=25550000-int(request.POST.get('bill_amount')))  
+        new_entry.save()
+        return redirect('salary-register')
     else:
-        return HttpResponse('render the form')        
+        types=Salary_Allotment.objects.all()
+        entries=Salary_Register.objects.all()
+        for x in types:
+            print(x.id)
+        return render(request,'salary/salaryRegisterForm.html',{'types':types,'entries':entries})        
+
+def adminHome(request):
+    return render(request,'admin/adminBase.html')
+
+  
