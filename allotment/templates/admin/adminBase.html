@@ -27,12 +27,15 @@
           <a class="navbar-brand brand-logo" href="#"><img src="{% static 'salary/assets/images/logon.jpg' %}" alt="logo" /></a>
           <a class="navbar-brand brand-logo-mini" href="#"><img src="{% static 'salary/assets/images/logon.jpg' %}" alt="logo" /></a>
           <br>
+            <p class="mb-1 text-black">Odisha Legislative Assembly</p>
         </div>
         <div class="navbar-menu-wrapper d-flex align-items-stretch">
           <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
             <span class="mdi mdi-menu"></span>
           </button>
-          
+          <div class="nav-profile-text"><br>
+            <h4 class="card-title">Bill Register System</h4>
+          </div>
           <ul class="navbar-nav navbar-nav-right">
             <li class="nav-item nav-profile dropdown">
               <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
@@ -93,42 +96,66 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-                <span class="menu-title"></span>
+              <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic1" aria-expanded="false" aria-controls="ui-basic">
+                <span class="menu-title">Major, Minor and Sub Heads</span>
                 <i class="menu-arrow"></i>
               </a>
-              <div class="collapse" id="ui-basic">
+              <div class="collapse" id="ui-basic1">
                 <ul class="nav flex-column sub-menu">
-                  <li class="nav-item"> <a class="nav-link" href="#">Buttons</a></li>
-                  <li class="nav-item"> <a class="nav-link" href="#">Typography</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="{% url 'majorSub' %}">Major Heads and Sub Heads </a></li>
+                  <li class="nav-item"> <a class="nav-link" href="{% url 'minor' %}">Minor Heads</a></li>
                 </ul>
               </div>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">
-                <span class="menu-title">Icons</span>
-                <i class="mdi mdi-contacts menu-icon"></i>
+              <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic2" aria-expanded="false" aria-controls="ui-basic">
+                <span class="menu-title">Schemes and Sub Schemes</span>
+                <i class="menu-arrow"></i>
               </a>
+              <div class="collapse" id="ui-basic2">
+                <ul class="nav flex-column sub-menu">
+                  <li class="nav-item"> <a class="nav-link" href="{% url 'scheme' %}">Schemes </a></li>
+                  <li class="nav-item"> <a class="nav-link" href="{% url 'subScheme' %}">Sub Schemes</a></li>
+                </ul>
+              </div>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">
-                <span class="menu-title">Forms</span>
-                <i class="mdi mdi-format-list-bulleted menu-icon"></i>
+              <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic3" aria-expanded="false" aria-controls="ui-basic">
+                <span class="menu-title">Mapping</span>
+                <i class="menu-arrow"></i>
               </a>
+              <div class="collapse" id="ui-basic3">
+                <ul class="nav flex-column sub-menu">
+                  <li class="nav-item"> <a class="nav-link" href="{% url 'minor-scheme' %}">Scheme to Minor Head</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="{% url 'scheme-subScheme' %}">Sub Scheme to Scheme</a></li>
+                </ul>
+              </div>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                <span class="menu-title">Charts</span>
-                <i class="mdi mdi-chart-bar menu-icon"></i>
+            <!-- <li class="nav-item">
+              <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic4" aria-expanded="false" aria-controls="ui-basic">
+                <span class="menu-title">Allotment to Heads</span>
+                <i class="menu-arrow"></i>
               </a>
-            </li>
+              <div class="collapse" id="ui-basic4">
+                <ul class="nav flex-column sub-menu">
+                  <li class="nav-item"> <a class="nav-link" href="{% url 'majorSub' %}">Major-Sub Head </a></li>
+                  <li class="nav-item"> <a class="nav-link" href="#">Minor Head</a></li>
+                </ul>
+              </div>
+            </li> -->
             <li class="nav-item">
-              <a class="nav-link" href="#">
-                <span class="menu-title">Tables</span>
+              <a class="nav-link" href="{% url 'object' %}">
+                <span class="menu-title">Object Head</span>
                 <i class="mdi mdi-table-large menu-icon"></i>
               </a>
             </li>
             <li class="nav-item">
+              <a class="nav-link" href="{% url 'allotment' %}">
+                <span class="menu-title">Allotment to Object</span>
+                <i class="mdi mdi-table-large menu-icon"></i>
+              </a>
+            </li>
+            <!-- <li class="nav-item">
               <a class="nav-link" data-bs-toggle="collapse" href="#general-pages" aria-expanded="false" aria-controls="general-pages">
                 <span class="menu-title">Sample Pages</span>
                 <i class="menu-arrow"></i>
@@ -143,22 +170,14 @@
                   <li class="nav-item"> <a class="nav-link" href="#"> 500 </a></li>
                 </ul>
               </div>
-            </li>
+            </li> -->
             
           </ul>
         </nav>
         <!-- partial -->
         <div class="main-panel">
           <div class="content-wrapper">
-            <div class="page-header">
-              <h3 class="page-title"> Odisha Legislative Assembly</h3>
-             <!-- <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="#">Forms</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">Form elements</li>
-                </ol>
-              </nav>-->
-            </div>
+        
             {% block content %}
 
             {% endblock %}

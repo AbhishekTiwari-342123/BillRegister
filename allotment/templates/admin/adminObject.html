@@ -1,0 +1,90 @@
+{% extends 'admin/adminBase.html' %}
+
+{% block content %}
+<div class="page-header">
+  <h3 class="page-title">Add Object Head</h3>
+ <!-- <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="#">Forms</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Form elements</li>
+    </ol>
+  </nav>-->
+</div>
+<div class="row">
+              
+    <div class="col-md-12 grid-margin stretch-card bil">
+      <div class="card">
+        <div class="card-body">
+        <!--  <p class="card-description"> Horizontal form layout </p>-->
+          <form class="forms-sample" method="POST">
+            {% csrf_token %}
+            <div class="form-group row">
+              <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Object Head Code</label>
+              <div class="col-sm-9">
+                <input type="number" class="form-control" name='objectCode' id="exampleInputUsername2" placeholder="">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Object Head Name</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" name='objectName' id="exampleInputEmail2" placeholder="">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Account Head - Scheme - Sub Scheme </label>
+              <div class="col-sm-9">
+                <select type="text" class="form-control" name='scheme'>
+                  <option disabled selected>--Select--</option>
+                  {% for headSubScheme in headSubSchemes %}
+                  <option value="{{headSubScheme.id}}">{{headSubScheme}}</option>
+                  {% endfor %}
+                </select>
+              </div>
+            </div>
+            
+            <button type="submit" class="btn btn-gradient-primary me-2">Submit</button>
+            <button type="reset" class="btn btn-light">Reset</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    
+            
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12 grid-margin stretch-card bil">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Object Head Table</h4>
+          <div class="mbill">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th> Object Head Code</th>
+                  <th> Object Head Name</th>
+                  <th> Head & Scheme</th>
+                  <th> <a href="#" >Edit</a> </th>
+                  <th> <a href="#" >Delete</a> </th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for object in objects %}
+                <tr>
+                  <td>{{object.Object_Code}}</td>
+                  <td>{{object.Object_Name}}</td>
+                  <td>{{object.SubScheme_Code}}</td>
+                  <td><button>Edit</button></td>
+                  <td><button>Delete</button></td>
+                  
+                  
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+       </div>
+      </div>
+    </div>
+  </div>    
+{% endblock %}

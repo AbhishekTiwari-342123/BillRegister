@@ -1,0 +1,90 @@
+{% extends 'admin/adminBase.html' %}
+
+{% block content %}
+<div class="page-header">
+  <h3 class="page-title">Add Minor Head</h3>
+ <!-- <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="#">Forms</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Form elements</li>
+    </ol>
+  </nav>-->
+</div>
+<div class="row">
+              
+    <div class="col-md-12 grid-margin stretch-card bil">
+      <div class="card">
+        <div class="card-body">
+        <!-- <p class="card-description"></p> -->
+          <form class="forms-sample" method="POST">
+            {% csrf_token %}
+            <div class="form-group row">
+              <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Minor Head Code</label>
+              <div class="col-sm-9">
+                <input type="number" class="form-control" name="minorCode" id="exampleInputUsername2" placeholder="">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Minor Head Name</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" name="minorName" id="exampleInputEmail2" placeholder="">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Major and Sub Head</label>
+              <div class="col-sm-9">
+                <select type="text" class="form-control"  name="head">
+                  <option disabled selected>--Select Major Head --</option>
+                  {% for headCode in headCodes %}
+                  <option value="{{headCode.pk}}">{{headCode}}</option>
+                  {% endfor %}
+                </select>
+              </div>
+            </div>
+            
+            <button type="submit" class="btn btn-gradient-primary me-2">Submit</button>
+            <button type="reset" class="btn btn-light">Reset</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    
+            
+</div>
+<div class="row">
+  <div class="col-lg-12 grid-margin stretch-card bil">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Salary Allotment Table</h4>
+        <div class="mbill">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th> Minor Head Code</th>
+                <th> Minor Head Name</th>
+                <th> Major-Sub Head Code</th>
+                <th> <a href="#" >Edit</a> </th>
+                <th> <a href="#" >Delete</a> </th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for minor in minors %}
+              <tr>
+                <td>{{minor.MinorHead_Code}}</td>
+                <td>{{minor.MinorHead_Name}}</td>
+                <td>{{minor.Head_Code}}</td>
+                <td><button>Edit</button></td>
+                <td><button>Delete</button></td>
+                
+                
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+     </div>
+    </div>
+  </div>
+</div> 
+
+{% endblock %}
