@@ -96,6 +96,19 @@
               </a>
             </li>
             <li class="nav-item">
+              <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic4" aria-expanded="false" aria-controls="ui-basic">
+                <span class="menu-title">User Management</span>
+                <i class="menu-arrow"></i>
+              </a>
+              <div class="collapse" id="ui-basic4">
+                <ul class="nav flex-column sub-menu">
+                  <li class="nav-item"> <a class="nav-link" href="{% url 'addUser' %}">Add User</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="#">Assign Role</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="#">Disable User</a></li>
+                </ul>
+              </div>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic1" aria-expanded="false" aria-controls="ui-basic">
                 <span class="menu-title">Major, Minor and Sub Heads</span>
                 <i class="menu-arrow"></i>
@@ -131,18 +144,6 @@
                 </ul>
               </div>
             </li>
-            <!-- <li class="nav-item">
-              <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic4" aria-expanded="false" aria-controls="ui-basic">
-                <span class="menu-title">Allotment to Heads</span>
-                <i class="menu-arrow"></i>
-              </a>
-              <div class="collapse" id="ui-basic4">
-                <ul class="nav flex-column sub-menu">
-                  <li class="nav-item"> <a class="nav-link" href="{% url 'majorSub' %}">Major-Sub Head </a></li>
-                  <li class="nav-item"> <a class="nav-link" href="#">Minor Head</a></li>
-                </ul>
-              </div>
-            </li> -->
             <li class="nav-item">
               <a class="nav-link" href="{% url 'object' %}">
                 <span class="menu-title">Object Head</span>

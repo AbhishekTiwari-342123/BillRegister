@@ -16,14 +16,15 @@
       <div class="card">
         <div class="card-body">
         <p class="card-description">**Sub Schemes come under the Schemes. </p>
-          <form class="forms-sample">
+          <form class="forms-sample" method="POST">
+            {% csrf_token %}
             <div class="form-group row">
               <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Schemes</label>
               <div class="col-sm-9">
-                <select type="text" class="form-control" >
+                <select type="text" class="form-control" name="scheme" >
                   <option disabled selected>--Select Scheme --</option>
                   {% for scheme in schemes %}
-                  <option>{{scheme}}-{{scheme.Scheme_Name}}</option>
+                  <option value="{{scheme.id}}">{{scheme}}</option>
                   {% endfor %}
                 </select>
               </div>
@@ -31,10 +32,10 @@
             <div class="form-group row">
               <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Sub Schemes</label>
               <div class="col-sm-9">
-                <select type="text" class="form-control" >
+                <select type="text" class="form-control" name="subScheme">
                   <option disabled selected>--Select Sub Scheme --</option>
                   {% for subScheme in subSchemes %}
-                  <option>{{subScheme}}</option>
+                  <option value="{{subScheme.pk}}">{{subScheme}}</option>
                   {% endfor %}
                 </select>
               </div>
@@ -47,5 +48,40 @@
     </div>
     
             
+</div>
+
+<div class="row">
+  <div class="col-lg-12 grid-margin stretch-card bil">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Sub Schemes Mapped to Scheme Table</h4>
+        <div class="mbill">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th> Scheme </th>
+                <th> Sub Scheme</th>
+                <th> <a href="#" >Edit</a> </th>
+                <th> <a href="#" >Delete</a> </th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for mapping in mappings %}
+              <tr>
+                <td>{{mapping.Scheme_Code}}</td>
+                <td>{{mapping.SubScheme_Code}}</td>
+                <td><button>Edit</button></td>
+                <td><button>Delete</button></td>
+                
+                
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+     </div>
+    </div>
   </div>
+</div>  
+
 {% endblock %}

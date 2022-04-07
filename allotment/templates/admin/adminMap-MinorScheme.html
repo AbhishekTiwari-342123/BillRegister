@@ -16,14 +16,15 @@
       <div class="card">
         <div class="card-body">
         <p class="card-description">**Schemes come under the Account Heads. </p>
-          <form class="forms-sample">
+          <form class="forms-sample" method="POST">
+            {% csrf_token %}
             <div class="form-group row">
-              <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Major-Sub-Minor Head</label>
+              <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Account Head</label>
               <div class="col-sm-9">
-                <select type="text" class="form-control" >
+                <select type="text" class="form-control" name="minorHead">
                   <option disabled selected>--Select Major Head --</option>
                   {% for head in heads %}
-                  <option>{{head}}</option>
+                  <option value="{{head.pk}}">{{head}}</option>
                   {% endfor %}
                 </select>
               </div>
@@ -31,10 +32,10 @@
             <div class="form-group row">
               <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Scheme</label>
               <div class="col-sm-9">
-                <select type="text" class="form-control" >
+                <select type="text" class="form-control" name="scheme">
                   <option disabled selected>--Select Scheme--</option>
                   {% for scheme in schemes %}
-                  <option>{{scheme}}-{{scheme.Scheme_Name}}</option>
+                  <option value="{{scheme.pk}}">{{scheme}}-{{scheme.Scheme_Name}}</option>
                   {% endfor %}
                 </select>
               </div>
@@ -44,8 +45,40 @@
           </form>
         </div>
       </div>
-    </div>
-    
-            
+    </div>      
   </div>
+
+  <div class="row">
+    <div class="col-lg-12 grid-margin stretch-card bil">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Schemes Mapped to Minor Heads Table</h4>
+          <div class="mbill">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th> Account Head </th>
+                  <th> Scheme </th>
+                  <th> <a href="#" >Edit</a> </th>
+                  <th> <a href="#" >Delete</a> </th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for mapping in mappings %}
+                <tr>
+                  <td>{{mapping.MinorHead_Code}}</td>
+                  <td>{{mapping.Scheme_Code}}</td>
+                  <td><button>Edit</button></td>
+                  <td><button>Delete</button></td>
+                  
+                  
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+       </div>
+      </div>
+    </div>
+  </div>   
 {% endblock %}

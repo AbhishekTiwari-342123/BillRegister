@@ -25,7 +25,7 @@ class ObjectHead_Admin(admin.ModelAdmin):
     list_display=('Object_Code','Object_Name','SubScheme_Code')
 
 class SalaryAllotment_Admin(admin.ModelAdmin):
-    list_display=('Object_Code','Allotment_Amount')
+    list_display=('Object_Code','Allotment_Amount','Ceiling_Percentage','Ceiling_Amount','Year')
 
 class SalaryRegister_Admin(admin.ModelAdmin):
     list_display=('Bill_Type','Bill_Number','Bill_Date','Description','Bill_Amount','Bill_Expenditure','Bill_Balance','Bill_Remark')
@@ -36,7 +36,8 @@ class MinorScheme_Admin(admin.ModelAdmin):
 class Scheme_SubScheme_Admin(admin.ModelAdmin):
     list_display=('Scheme_Code','SubScheme_Code')
 
-
+class customUser2Admin(admin.ModelAdmin):
+    list_display=['username', 'Role']
 
 admin.site.register(Major_Sub_Head,MajorSubHead_Admin)
 admin.site.register(Minor_Head,MinorHead_Admin)
@@ -49,5 +50,5 @@ admin.site.register(Scheme_SubScheme,Scheme_SubScheme_Admin)
 admin.site.register(Salary_Register,SalaryRegister_Admin)
 admin.site.register(roles,RoleAdmin)
 admin.site.register(AssignRole,AssignRoleAdmin)
-"""
-"""
+admin.site.register(customUser2,customUser2Admin)
+

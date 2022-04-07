@@ -3,7 +3,7 @@ from ast import Str
 from email.header import Header
 from tkinter import CASCADE
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, AbstractUser
 # Create your models here
 
 ########################################################## Scheme Master Table starts ###########################################################
@@ -13,6 +13,19 @@ class roles(models.Model):
 
     def __str__(self):
         return str(self.Role)
+
+# class customUser(User):
+#     Role = models.ForeignKey(roles,on_delete=models.CASCADE)
+
+#     def __str__(self):
+#         return str(self.username)
+
+class customUser2(AbstractUser):
+    Role = models.ForeignKey(roles,on_delete=models.CASCADE)
+
+    def __str__(self):
+        return str(self.username)
+
 
 class AssignRole(models.Model):
     user = models.OneToOneField(User,on_delete=models.CASCADE,    default=None, null=True)
@@ -112,6 +125,11 @@ class Object_Head(models.Model):
 class Salary_Allotment(models.Model):
     Object_Code=models.ForeignKey(Object_Head, on_delete=models.CASCADE)
     Allotment_Amount=models.IntegerField(default=0)
+    Ceiling_Percentage=models.FloatField(default=0.50)
+    Year=models.IntegerField(default=2021)
+    @property
+    def Ceiling_Amount(self):
+        return self.Allotment_Amount*self.Ceiling_Percentage
 
     def __str__(self):
         return str(self.Object_Code)

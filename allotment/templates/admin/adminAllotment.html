@@ -35,6 +35,20 @@
                 <input type="number" class="form-control" name="amount" id="exampleInputEmail2" placeholder="">
               </div>
             </div>
+            <div class="form-group row">
+              <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Ceiling Percentage</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" name="percent" id="exampleInputEmail2" placeholder="">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Financial Year</label>
+              <div class="col-sm-9">
+                <input type="number" class="form-control" name="year" id="exampleInputEmail2" placeholder="">
+              </div>
+            </div>
+            
+            
             <button type="submit" class="btn btn-gradient-primary me-2">Submit</button>
             <button type="reset" class="btn btn-light">Reset</button>
           </form>
@@ -48,13 +62,15 @@
     <div class="col-lg-12 grid-margin stretch-card bil">
       <div class="card">
         <div class="card-body">
-          <h4 class="card-title">Salary Allotment Table</h4>
+          <h4 class="card-title">Allotment to Heads Table</h4>
           <div class="mbill">
             <table class="table table-striped">
               <thead>
                 <tr>
                   <th> Object Head </th>
                   <th> Alloted Amount</th>
+                  <th> Ceiling Amount</th>
+                  <th> Ceiling Percentage</th>
                   <th> <a href="#" >Edit</a> </th>
                   <th> <a href="#" >Delete</a> </th>
                 </tr>
@@ -64,6 +80,8 @@
                 <tr>
                   <td>{{allotment.Object_Code}}</td>
                   <td>{{allotment.Allotment_Amount}}</td>
+                  <td>{{allotment.Ceiling_Amount}}</td>
+                  <td>{{allotment.Ceiling_Percentage}}</td>
                   <td><button>Edit</button></td>
                   <td><button>Delete</button></td>
                   
